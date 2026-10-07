@@ -1,0 +1,29 @@
+# InfinityFree Apache Configuration
+DirectoryIndex index.html index.php
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Prevent 403 Forbidden on directory access
+    Options -Indexes
+
+    # Allow CORS requests for API and web assets
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, PUT, DELETE"
+        Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    </IfModule>
+</IfModule>
+
+# Set MIME types for Web Fonts, Images, and Scripts
+<IfModule mod_mime.c>
+    AddType application/javascript js mjs
+    AddType text/css css
+    AddType image/webp webp
+    AddType image/svg+xml svg
+    AddType application/json json
+    AddType font/woff woff
+    AddType font/woff2 woff2
+</IfModule>
